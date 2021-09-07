@@ -1,12 +1,13 @@
 <?php
 
-namespace Entity;
+namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
 use DateTimeInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use JetBrains\PhpStorm\Pure;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * A book.
@@ -30,6 +31,7 @@ class Book
      *
      * @ORM\Column(nullable=true)
      */
+    #[Assert\Isbn]
     public ?string $isbn = null;
 
     /**
@@ -37,6 +39,7 @@ class Book
      *
      * @ORM\Column
      */
+    #[Assert\NotBlank]
     public string $title = '';
 
     /**
@@ -44,6 +47,7 @@ class Book
      *
      * @ORM\Column(type="text")
      */
+    #[Assert\NotBlank]
     public string $description = '';
 
     /**
@@ -51,6 +55,7 @@ class Book
      *
      * @ORM\Column
      */
+    #[Assert\NotBlank]
     public string $author = '';
 
     /**
@@ -58,6 +63,7 @@ class Book
      *
      * @ORM\Column(type="datetime_immutable")
      */
+    #[Assert\NotNull]
     public ?DateTimeInterface $publicationDate = null;
 
     /**
